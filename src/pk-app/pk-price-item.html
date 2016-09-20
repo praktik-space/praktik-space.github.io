@@ -1,0 +1,57 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="./pk-layout-styles.html">
+
+</head><body><dom-module id="pk-price-item">
+  <template>
+    <style include="pk-layout">
+      :host {
+        display: block;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      ul ::content li {
+        position: relative;
+      }
+
+      ul ::content li::before {
+        content: '>';
+        display: block;
+        position: absolute;
+        color: var(--pk-layout-color-general);
+        left: -15px;
+        -webkit-font-smoothing: subpixel-antialiased;
+      }
+
+      .price {
+        margin: 25px 0;
+      }
+
+      .book-button {
+        color: var(--pk-layout-color-info);
+        cursor: pointer;
+      }
+    </style>
+    <paper-dialog id="dialog" modal="">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="buttons">
+        <paper-button dialog-confirm="" autofocus="">Tap me to close</paper-button>
+      </div>
+    </paper-dialog>
+    <h3>{{name}}</h3>
+    <ul>
+      <content select="li"></content>
+    </ul>
+    <h3 class="price">{{price}}</h3>
+    <span class="book-button" on-click="openDialog">Зарезервировать</span>
+
+  </template>
+  <script>Polymer({is:"pk-price-item",parameters:{name:String,price:String},openDialog:function(){this.$.dialog.open()}});</script>
+</dom-module>
+</body></html>

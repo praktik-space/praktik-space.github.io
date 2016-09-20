@@ -1,0 +1,33 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+</head><body><dom-module id="pk-feature-icon-block">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+
+      .icon {
+        width: 80px;
+        height: 80px;
+      }
+
+      .content {
+        text-align: center;
+      }
+    </style>
+
+    <div class="layout vertical center">
+      <p>
+        <img src$="{{icon}}" class="icon">
+      </p>
+      <p class="content">
+        <content></content>
+      </p>
+    </div>
+  </template>
+  <script>Polymer({is:"pk-feature-icon-block",properties:{icon:String}});</script>
+
+</dom-module>
+</body></html>

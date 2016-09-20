@@ -1,0 +1,132 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<style is="custom-style">
+  :root {
+    --pk-layout-header-font: {
+      font-family: fugueregular;
+    }
+
+    --pk-layout-color-info: rgb(65, 173, 73);
+    --pk-layout-color-general: rgb(230, 149, 102);
+    --pk-layout-block-indent: 25px;
+  }
+</style>
+
+</head><body><dom-module id="pk-layout">
+  <template>
+    <style>
+      @font-face {
+        font-family: 'fugueregular';
+        src: url('/fonts/fugue-webfont.woff2') format('woff2'),
+          url('/fonts/fugue-webfont.woff') format('woff'),
+          url('/fonts/fugue-webfont.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      :host {
+        font-size: 1rem;
+        font-family: Roboto, sans-serif;
+        font-weight: 300;
+      }
+
+      .content-holder {
+        max-width: 830px;
+        padding: 0 1rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      h1, h2, h3, h4 {
+        @apply(--pk-layout-header-font);
+        font-weight: normal;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+      p:not(:last-of-type) {
+        margin-bottom: 1.4rem;
+      }
+
+      h2 {
+        font-size: 23pt;
+        margin-bottom: 1.4rem;
+      }
+
+      h3 {
+        font-size: inherit;
+        line-height: 1.4rem;
+      }
+
+      section {
+        margin-bottom: 1.4rem;
+      }
+
+      footer {
+        margin-bottom: 2.8rem;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      img.rounded {
+        border-radius: 100%;
+      }
+
+      .cell:not(:last-of-type) {
+        margin-right: var(--pk-layout-block-indent);
+      }
+
+      .insert {
+        position: relative;
+        padding-left: var(--pk-layout-block-indent);
+      }
+
+      .insert::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        width: 2px;
+        height: 90%;
+        top: 5%;
+        left: 0;
+        background: var(--pk-layout-color-info);
+      }
+
+      .icon-block {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+      }
+
+      .icon-block img {
+        width: 60px;
+        height: 60px;
+        padding-right: 12px;
+      }
+
+      .residents-item {
+        @apply(--pk-layout-header-font);
+      }
+
+      .so-large-button {
+        @apply(--pk-layout-header-font);
+        width: 100%;
+        line-height: 80px;
+        background: var(--pk-layout-color-info);
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+  </template>
+</dom-module>
+</body></html>

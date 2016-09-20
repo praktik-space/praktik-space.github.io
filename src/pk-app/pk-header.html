@@ -1,0 +1,72 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="./pk-layout-styles.html">
+
+</head><body><dom-module id="pk-header">
+  <template>
+    <style include="iron-flex iron-flex-alignment iron-flex-factors pk-layout">
+      :host {
+        display: block;
+      }
+
+      app-header {
+        padding-top: 30px;
+        padding-bottom: 20px;
+      }
+
+      app-header app-toolbar {
+        height: 80px;
+        --app-toolbar-font-size: 1rem;
+      }
+
+      app-header .logo {
+        height: 80px;
+      }
+
+      .menu-items {
+        @apply(--pk-layout-header-font);
+        text-align: right;
+      }
+
+      .menu-items::content a {
+        text-decoration: none;
+        margin: 0 1.4rem;
+        font-size: 120%;
+      }
+
+      address {
+        font-style: normal;
+        text-align: right;
+        font-size: 80%;
+      }
+
+      address::content address {
+        font-style: normal;
+      }
+
+      address::content address[phone-number] {
+        margin-top: 0.5rem;
+        color: var(--pk-layout-color-info);
+      }
+    </style>
+    <app-header>
+      <app-toolbar class="layout horizontal end content-holder">
+        <div main-title="" class="flex-none layout horizontal">
+          <img src="/images/praktik-logo.svg" class="logo">
+        </div>
+        <div class="flex menu-items">
+          <content select="a"></content>
+        </div>
+        <address>
+          <content select="address:not([phone-number])"></content>
+          <content select="address[phone-number]"></content>
+        </address>
+      </app-toolbar>
+    </app-header>
+
+  </template>
+  <script>Polymer({is:"pk-header"});</script>
+</dom-module>
+</body></html>

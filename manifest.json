@@ -1,0 +1,7 @@
+{
+  "name": "praktik",
+  "short_name": "praktik",
+  "description": "praktik website",
+  "start_url": "/",
+  "display": "standalone"
+}

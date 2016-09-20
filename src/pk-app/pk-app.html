@@ -1,0 +1,251 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="../../bower_components/google-map/google-map-marker.html">
+<link rel="import" href="./pk-layout-styles.html">
+<link rel="import" href="./pk-header.html">
+<link rel="import" href="./pk-picture-screen.html">
+<link rel="import" href="./pk-grid.html">
+<link rel="import" href="./pk-price-item.html">
+
+</head><body><dom-module id="pk-app">
+  <template>
+    <style include="iron-flex iron-flex-alignment iron-flex-factors app-grid-style pk-layout">
+      :host {
+        display: block;
+      }
+
+      .map {
+        height: 490px;
+      }
+    </style>
+
+    <app-header-layout fullbleed="">
+      <pk-header>
+        <a href="#coworking">коворкинг</a>
+        <a href="#residents">резиденты</a>
+        <a href="/cooperation">сотрудничество</a>
+        <address>Санкт-Петербург,<br> 7-ая&nbsp;советская&nbsp;22</address>
+        <address phone-number="">8 (921) 303 06 26</address>
+      </pk-header>
+
+      <div>
+        <section>
+          <pk-picture-screen src="/images/praktik-coworking.jpg">
+            Коворкинг, офисы архитектурных, дизайн-бюро, IT компаний, образовательные проекты, кафе
+          </pk-picture-screen>
+        </section>
+
+        <section class="content-holder">
+          <h2>Практик</h2>
+          <p>
+            На трех этажах светлого и просторного здания распологаются офисы
+            архитектурных и дизайн-бюро, рекламные агентства и стартапы, студии
+            музыкантов и видеопроизводства. Опытная команда проекта создает
+            комфортные условия для продуктивной работы креативного бизнеса
+            и помогает сформировать среду для общения, обмена идеями
+            и деловыми контактами.
+          </p>
+        </section>
+
+        <section class="content-holder">
+          <h2>Коворкинг</h2>
+          <div class="layout horizontal center">
+            <div class="flex-2 cell">
+              На трех этажах светлого и просторного здания распологаются офисы
+              архитектурных и дизайн-бюро, рекламные агентства и&nbsp;стартапы,
+              студии музыкантов и видеопроизводства. Опытная команда проекта
+              создает комфортные условия для продуктивной работы креативного
+              кластера.
+            </div>
+
+            <div class="flex-1 insert">
+              <h3>Режим работы коворкинга</h3>
+              Пн.—Пт. — 10:00—22:00 <br>
+              Сб.—Вс. — 10:00—20:00
+            </div>
+          </div>
+        </section>
+
+        <section class="content-holder">
+          <img src="/images/praktik-coworking-02.jpg">
+        </section>
+
+        <section class="content-holder">
+          <pk-grid columns="3">
+            <section class="icon-block">
+              <img src="/images/icon-arrow-up.svg">
+              Чай и кофе для резидентов&nbsp;— бесплатны  в&nbsp;течении всего рабочего дня
+            </section>
+            <section class="icon-block">
+              <img src="/images/icon-arrow-up.svg">
+              Принтер и сканер
+            </section>
+            <section class="icon-block">
+              <img src="/images/icon-arrow-up.svg">
+              Налиие переговорки
+            </section>
+            <section class="icon-block">
+              <img src="/images/icon-arrow-up.svg">
+              Возможность оставить вещи под замком
+            </section>
+            <section class="icon-block">
+              <img src="/images/icon-arrow-up.svg">
+              Возможность закрепить за собой рабочее место
+            </section>
+            <section class="icon-block">
+              <img src="/images/icon-arrow-up.svg">
+              Высокоскоростной Интернет через WiFi или LAN
+            </section>
+          </pk-grid>
+        </section>
+
+        <section class="content-holder">
+          <h2>Тарифы</h2>
+
+          <pk-grid columns="4">
+            <pk-price-item name="Дневной" price="500₽/день">
+              <li>Место в коворкинге</li>
+              <li>Доступ к принтеру</li>
+              <li>Напитки</li>
+              <li>Ящик для вещей</li>
+              <li>Работа с 10:00 до 23:00</li>
+            </pk-price-item>
+            <pk-price-item name="Месячный Hot desk" price="5000₽/месяц">
+              <li>Место в коворкинге</li>
+              <li>Доступ к принтеру</li>
+              <li>Напитки</li>
+              <li>Ящик для вещей</li>
+              <li>Работа с 10:00 до 23:00</li>
+            </pk-price-item>
+            <pk-price-item name="Месячный fix desk" price="7000₽/месяц">
+              <li>Место в коворкинге</li>
+              <li>Доступ к принтеру</li>
+              <li>Напитки</li>
+              <li>Ящик для вещей</li>
+              <li>Работа с 10:00 до 23:00</li>
+            </pk-price-item>
+            <pk-price-item name="Месячный fix desk" price="8000₽/месяц">
+              <li>Место в коворкинге</li>
+              <li>Доступ к принтеру</li>
+              <li>Напитки</li>
+              <li>Ящик для вещей</li>
+              <li>Работа с 10:00 до 23:00</li>
+            </pk-price-item>
+          </pk-grid>
+        </section>
+
+        <section class="content-holder layout horizontal center">
+          <div class="flex-1 cell">
+            <img src="https://graph.facebook.com/1496554450/picture?type=large" class="rounded">
+          </div>
+          <div class="flex-5 cell">
+            Для ценителей взаимомотивирующей рабочей атмосферы мы создали пространство,
+            в котором профессионалы творческой индустрии могут резервировать
+            рабочие места помесячно, фиксируя стол за собой, или по системе
+            hot desk («займи свободный стол»). Так же можно поработать и день.
+            Приходите попробовать! До 1-го октября неделя работы — бесплатно.
+          </div>
+        </section>
+
+        <section class="content-holder">
+          <h2>Офисы</h2>
+          <p>
+            Благодаря просторному двору и стеклянным перегородкам, в здании
+            очень светло. В отличие от большинства подобных проектов,
+            все помещения готовы к сдаче и требуют лишь небольшого
+            косметического ремонта.
+          </p>
+        </section>
+
+        <section class="content-holder">
+          <h2>Резиденты</h2>
+          <pk-grid columns="3">
+            <section class="residents-item">
+              <a href="http://makovand.ru/" target="_blank">Маков и партнеры</a>
+              <p>Курсы подготовки к ЕГЭ</p>
+            </section>
+
+            <section class="residents-item">
+              <a href="https://evilmartians.com/" target="_blank">Злые Марсиане</a>
+              <p>IT компания</p>
+            </section>
+
+            <section class="residents-item">
+              <a href="http://www.cecartslink.org/index.html" target="_blank">CEC ArtsLink workshop</a>
+              <p>Мастерская арт-резиденции</p>
+            </section>
+
+            <section class="residents-item">
+              <span>UA</span>
+              <p>Архитектурное бюро</p>
+            </section>
+
+            <section class="residents-item">
+              <a href="http://codecode.ru/" target="_blank">Кодельная</a>
+              <p>IT компания</p>
+            </section>
+
+            <section class="residents-item">
+              <span>Курсы иллюстрации</span>
+              <p>Алёна Козначеева</p>
+            </section>
+          </pk-grid>
+        </section>
+
+        <section class="content-holder">
+          <pk-grid columns="3">
+            <a href="https://www.instagram.com/p/BKWNhk0jNYN/?taken-by=praktik.space" target="blank">
+              <img src="https://scontent-arn2-1.cdninstagram.com/t51.2885-15/e35/14294706_1186737834683040_1060118780_n.jpg?ig_cache_key=MTMzOTMxNzQyMTA3MzAyODYyMQ%3D%3D.2">
+            </a>
+
+            <a href="https://www.instagram.com/p/BJfq29HDRF8/?taken-by=praktik.space" target="blank">
+              <img src="https://scontent-arn2-1.cdninstagram.com/t51.2885-15/e35/14072842_1078128618931392_2035960755_n.jpg?ig_cache_key=MTMyMzk2NTMwOTg5MTk3MzUwMA%3D%3D.2">
+            </a>
+
+            <a href="https://www.instagram.com/p/BJfmzJLj8a1/?taken-by=praktik.space" target="blank">
+              <img src="https://scontent-arn2-1.cdninstagram.com/t51.2885-15/e35/14073282_957406254386114_1698172972_n.jpg?ig_cache_key=MTMyMzk0NzQ1NTc4ODU5ODk2NQ%3D%3D.2">
+            </a>
+          </pk-grid>
+        </section>
+
+        <section class="content-holder layout horizontal">
+          <div class="flex-2 cell">
+            <p>
+              Если вы считаете, что Практик подходит вам,
+              а вы Практику, напишите нам пару слов о своем проекте&nbsp;—&nbsp;давайте
+              знакомиться. <a href="mailto:info@praktik.space">info@praktik.space</a>
+            </p>
+          </div>
+          <div class="flex-1 cell">
+            <a href="/" class="so-large-button">Стать резидентом</a>
+          </div>
+        </section>
+
+        <section>
+          <google-map fit-to-markers="" disable-zoom="" disable-map-type-control="" zoom="14" class="map">
+            <google-map-marker latitude="59.936029" longitude="30.373334" title="7-ая советская, 22"></google-map-marker>
+          </google-map>
+        </section>
+
+        <section class="content-holder">
+          Санкт-Петербург, 7-ая Советская, 22<br>
+          8 (921) 303 06 26
+        </section>
+
+        <footer class="content-holder layout horizontal">
+          <div class="flex-1">
+            <h3>Практик в социальных сетях</h3>
+          </div>
+          <div class="flex-2">
+            <h3>Пресс-кит</h3>
+          </div>
+        </footer>
+      </div>
+    </app-header-layout>
+  </template>
+
+  <script>Polymer({is:"pk-app"});</script>
+</dom-module>
+</body></html>

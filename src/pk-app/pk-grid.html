@@ -1,0 +1,92 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="./pk-layout-styles.html">
+
+</head><body><dom-module id="pk-grid">
+  <template>
+    <style>
+      :host {
+      }
+
+      :host {
+        display: block;
+        --app-grid-gutter: var(--pk-layout-block-indent);
+
+        /**
+         * The width for the expandible item is:
+         * ((100% - subPixelAdjustment) / columns * itemColumns - gutter
+         *
+         * - subPixelAdjustment: 0.1px (Required for IE 11)
+         * - gutter: var(--app-grid-gutter)
+         * - columns: var(--app-grid-columns)
+         * - itemColumn: var(--app-grid-expandible-item-columns)
+         */
+        --app-grid-expandible-item: {
+          -webkit-flex-basis: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
+          flex-basis: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
+          max-width: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
+        };
+      }
+
+      .app-grid {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+
+        -ms-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+
+        /*padding-top: var(--app-grid-gutter, 0px);*/
+        /*padding-left: var(--app-grid-gutter, 0px);*/
+        box-sizing: border-box;
+
+        margin-right: calc(-1 * var(--app-grid-gutter, 0px));
+      }
+
+      .app-grid ::content > * {
+        /* Required for IE 10 */
+        -ms-flex: 1 1 100%;
+        -webkit-flex: 1;
+        flex: 1;
+
+        /* The width for an item is: (100% - subPixelAdjustment - gutter * columns) / columns */
+        -webkit-flex-basis: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
+        flex-basis: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
+
+        max-width: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
+        height: var(--app-grid-item-height, auto);
+        box-sizing: border-box;
+        margin-right: var(--app-grid-gutter, 0px);
+      }
+
+      .app-grid[has-aspect-ratio] ::content > * {
+        position: relative;
+      }
+
+      .app-grid[has-aspect-ratio] ::content > *::before {
+        display: block;
+        content: "";
+        padding-top: var(--app-grid-item-height, 100%);
+      }
+
+      .app-grid[has-aspect-ratio] ::content > * > * {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+    </style>
+    <div class="app-grid">
+      <content></content>
+    </div>
+  </template>
+
+  <script>Polymer({is:"pk-grid",properties:{columns:{type:Number,observer:"_columnsChanged"}},_columnsChanged:function(){this.customStyle["--app-grid-columns"]=String(this.columns),this.updateStyles()}});</script>
+</dom-module>
+</body></html>

@@ -1,0 +1,48 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/app-layout/app-box/app-box.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="./pk-layout-styles.html">
+
+</head><body><dom-module id="pk-picture-screen">
+  <template>
+    <style include="iron-flex iron-flex-alignment iron-flex-factors pk-layout">
+      :host {
+        display: block;
+      }
+
+      app-box {
+        height: calc(100vh - 80px);
+        --app-box-background-front-layer: {
+          background-position: bottom;
+          padding-bottom: 120px;
+          margin-top: -20px;
+          height: 100%;
+        }
+      }
+
+      main {
+        @apply(--pk-layout-header-font);
+        color: white;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+        width: 50%;
+        font-size: 120%;
+        line-height: 1.2;
+        -webkit-font-smoothing: antialiased;
+        padding-top: 40px;
+      }
+    </style>
+
+    <app-box effects="waterfall parallax-background">
+      <img background="" src="{{src}}">
+      <div class="content-holder">
+        <main>
+          <content></content>
+        </main>
+      </div>
+    </app-box>
+
+  </template>
+  <script>Polymer({is:"pk-picture-screen",properties:{src:String}});</script>
+</dom-module>
+</body></html>
