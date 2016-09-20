@@ -17,7 +17,7 @@
       }
 
       .map {
-        height: 490px;
+        height: 290px;
       }
     </style>
 
@@ -31,49 +31,37 @@
       </pk-header>
 
       <div>
-        <section>
+        <section class="page-section">
           <pk-picture-screen src="/images/praktik-coworking.jpg">
             <h1>Пространство для работы в&nbsp;центре Санкт-Петербурга</h1>
             Коворкинг, офисы архитектурных, дизайн-бюро, IT компаний, образовательные проекты, кафе
           </pk-picture-screen>
         </section>
 
-        <section class="content-holder">
-          <h2>Практик</h2>
-          <p>
-            На трех этажах светлого и просторного здания распологаются офисы
-            архитектурных и дизайн-бюро, рекламные агентства и стартапы, студии
-            музыкантов и видеопроизводства. Опытная команда проекта создает
-            комфортные условия для продуктивной работы креативного бизнеса
-            и помогает сформировать среду для общения, обмена идеями
-            и деловыми контактами.
-          </p>
-        </section>
-
-        <section class="content-holder">
+        <section class="content-holder page-section">
           <h2>Коворкинг</h2>
-          <div class="layout horizontal center">
+          <div class="layout horizontal start">
             <div class="flex-2 cell">
-              На трех этажах светлого и просторного здания распологаются офисы
-              архитектурных и дизайн-бюро, рекламные агентства и&nbsp;стартапы,
-              студии музыкантов и видеопроизводства. Опытная команда проекта
-              создает комфортные условия для продуктивной работы креативного
-              кластера.
+              <p>
+                Десятки розеток, личные настольные лампы, принтер, карандаши,
+                ручки и бумага и зарядные устройства для мобильных телефонов.
+                Все, чтобы работать и не думать ни о чем больше.
+              </p>
             </div>
 
             <div class="flex-1 insert">
-              <h3>Режим работы коворкинга</h3>
+              <h3>Коворкинг работает:</h3>
               Пн.—Пт. — 10:00—22:00 <br>
               Сб.—Вс. — 10:00—20:00
             </div>
           </div>
         </section>
 
-        <section class="content-holder">
+        <section class="content-holder page-section">
           <img src="/images/praktik-coworking-02.jpg">
         </section>
 
-        <section class="content-holder">
+        <section class="content-holder page-section">
           <pk-grid columns="3">
             <section class="icon-block">
               <img src="/images/icon-arrow-up.svg">
@@ -102,32 +90,32 @@
           </pk-grid>
         </section>
 
-        <section class="content-holder">
+        <section class="content-holder page-section">
           <h2>Тарифы</h2>
 
           <pk-grid columns="4">
-            <pk-price-item name="Дневной" price="500₽/день">
+            <pk-price-item name="Дневной" price="500₽/день" action-title="Поработать">
               <li>Место в коворкинге</li>
               <li>Доступ к принтеру</li>
               <li>Напитки</li>
               <li>Ящик для вещей</li>
               <li>Работа с 10:00 до 23:00</li>
             </pk-price-item>
-            <pk-price-item name="Месячный Hot desk" price="5000₽/месяц">
+            <pk-price-item name="Месячный Hot desk" price="5000₽/месяц" action-title="Работать">
               <li>Место в коворкинге</li>
               <li>Доступ к принтеру</li>
               <li>Напитки</li>
               <li>Ящик для вещей</li>
               <li>Работа с 10:00 до 23:00</li>
             </pk-price-item>
-            <pk-price-item name="Месячный fix desk" price="7000₽/месяц">
+            <pk-price-item name="Месячный fix desk" price="7000₽/месяц" action-title="Трудиться">
               <li>Место в коворкинге</li>
               <li>Доступ к принтеру</li>
               <li>Напитки</li>
               <li>Ящик для вещей</li>
               <li>Работа с 10:00 до 23:00</li>
             </pk-price-item>
-            <pk-price-item name="Месячный fix desk" price="8000₽/месяц">
+            <pk-price-item name="Месячный fix desk" price="8000₽/месяц" action-title="Вкалывать">
               <li>Место в коворкинге</li>
               <li>Доступ к принтеру</li>
               <li>Напитки</li>
@@ -137,7 +125,7 @@
           </pk-grid>
         </section>
 
-        <section class="content-holder layout horizontal center">
+        <section class="content-holder layout horizontal center page-section">
           <div class="flex-1 cell">
             <img src="https://graph.facebook.com/1496554450/picture?type=large" class="rounded">
           </div>
@@ -150,18 +138,14 @@
           </div>
         </section>
 
-        <section class="content-holder">
-          <h2>Офисы</h2>
+        <section class="content-holder page-section">
+          <h2>Резиденты</h2>
           <p>
             Благодаря просторному двору и стеклянным перегородкам, в здании
             очень светло. В отличие от большинства подобных проектов,
             все помещения готовы к сдаче и требуют лишь небольшого
             косметического ремонта.
           </p>
-        </section>
-
-        <section class="content-holder">
-          <h2>Резиденты</h2>
           <pk-grid columns="3">
             <section class="residents-item">
               <a href="http://makovand.ru/" target="_blank">Маков и партнеры</a>
@@ -195,7 +179,7 @@
           </pk-grid>
         </section>
 
-        <section class="content-holder">
+        <section class="content-holder page-section">
           <pk-grid columns="3">
             <a href="https://www.instagram.com/p/BKWNhk0jNYN/?taken-by=praktik.space" target="blank">
               <img src="https://scontent-arn2-1.cdninstagram.com/t51.2885-15/e35/14294706_1186737834683040_1060118780_n.jpg?ig_cache_key=MTMzOTMxNzQyMTA3MzAyODYyMQ%3D%3D.2">
@@ -211,7 +195,7 @@
           </pk-grid>
         </section>
 
-        <section class="content-holder layout horizontal">
+        <section class="content-holder layout horizontal page-section">
           <div class="flex-2 cell">
             <p>
               Если вы считаете, что Практик подходит вам,
@@ -224,14 +208,17 @@
           </div>
         </section>
 
-        <section>
+        <section class="content-holder page-section">
           <google-map fit-to-markers="" disable-zoom="" disable-map-type-control="" zoom="14" api-key="AIzaSyBrdJyk9uLpesMyB5ETxgAYa20GiV5AcU0" class="map">
             <google-map-marker latitude="59.936029" longitude="30.373334" title="7-ая советская, 22"></google-map-marker>
           </google-map>
         </section>
 
-        <section class="content-holder">
-          Санкт-Петербург, 7-ая Советская, 22<br>
+        <section class="content-holder page-section">
+          Санкт-Петербург, 7-ая Советская, 22,<br>
+          Метро «Площадь Восстания»,<br>
+          Троллейбус 5, 7, 10, 11, 7,<br>
+          Автобус 181, 74, 54, 46,<br>
           8 (921) 303 06 26
         </section>
 

@@ -50,7 +50,7 @@
       p {
         margin: 0;
       }
-      p:not(:last-of-type) {
+      p:not(:last-child) {
         margin-bottom: 1.4rem;
       }
 
@@ -61,16 +61,20 @@
 
       h2 {
         font-size: 23pt;
-        margin-bottom: 1.4rem;
+        margin-bottom: 0.7rem;
       }
 
       h3 {
-        font-size: inherit;
+        font-size: 110%;
         line-height: 1.4rem;
       }
 
       section {
-        margin-bottom: 1.4rem;
+        margin-bottom: 0.8rem;
+      }
+
+      section.page-section {
+        margin-bottom: 2.8rem;
       }
 
       footer {
@@ -85,7 +89,7 @@
         border-radius: 100%;
       }
 
-      .cell:not(:last-of-type) {
+      .cell:not(:last-child) {
         margin-right: var(--pk-layout-block-indent);
       }
 
@@ -123,7 +127,7 @@
       .so-large-button {
         @apply(--pk-layout-header-font);
         width: 100%;
-        line-height: 80px;
+        line-height: 55px;
         background: var(--pk-layout-color-info);
         color: white;
         text-align: center;
