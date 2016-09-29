@@ -1,0 +1,43 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
+
+</head><body><dom-module id="pk-slider">
+  <template>
+    <style is="custom-style">
+      :host {
+        display: block;
+        position: relative;
+      }
+
+      neon-animated-pages::content neon-animatable {
+        position: relative;
+      }
+
+      .left-arrow, .right-arrow {
+        position: absolute;
+        top: calc(50% - 42px);
+        font-size: 400%;
+        cursor: pointer;
+      }
+
+      .left-arrow {
+        left: -60px;
+      }
+
+      .right-arrow {
+        right: -60px;
+      }
+
+    </style>
+
+    <div class="left-arrow" on-click="prev">&lt;</div>
+    <div class="right-arrow" on-click="next">&gt;</div>
+
+    <neon-animated-pages on-click="next" id="pages" selected="[[selected]]">
+      <content select="neon-animatable"></content>
+    </neon-animated-pages>
+  </template>
+  <script>Polymer({is:"pk-slider",attached:function(){this.selected=0,this.pages=Polymer.dom(this).children.map(function(e){return e.firstElementChild})},prev:function(){this.selected=Math.max(this.selected-1,0)},next:function(){this.selected=Math.min(this.selected+1,this.pages.length-1)}});</script>
+</dom-module>
+</body></html>

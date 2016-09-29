@@ -8,6 +8,8 @@
 <link rel="import" href="./pk-picture-screen.html">
 <link rel="import" href="./pk-grid.html">
 <link rel="import" href="./pk-price-item.html">
+<link rel="import" href="./pk-slider.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable.html">
 
 </head><body><dom-module id="pk-app">
   <template>
@@ -58,34 +60,41 @@
         </section>
 
         <section class="content-holder page-section">
-          <img src="/images/praktik-coworking-02.jpg">
+          <pk-slider>
+            <neon-animatable>
+              <img src="/images/praktik-coworking.jpg">
+            </neon-animatable>
+            <neon-animatable>
+              <img src="/images/praktik-coworking-02.jpg">
+            </neon-animatable>
+          </pk-slider>
         </section>
 
         <section class="content-holder page-section">
           <pk-grid columns="3">
-            <section class="icon-block">
-              <img src="/images/icon-arrow-up.svg">
-              Чай и кофе для резидентов&nbsp;— бесплатны  в&nbsp;течении всего рабочего дня
+            <section>
+              
+              <strong>Чай и кофе для резидентов</strong>&nbsp;— бесплатны  в&nbsp;течении всего рабочего дня
             </section>
-            <section class="icon-block">
-              <img src="/images/icon-arrow-up.svg">
-              Принтер и сканер
+            <section>
+              
+              <strong>Принтер и сканер</strong>
             </section>
-            <section class="icon-block">
-              <img src="/images/icon-arrow-up.svg">
-              Налиие переговорки
+            <section>
+              
+              <strong>Переговорная комната</strong>
             </section>
-            <section class="icon-block">
-              <img src="/images/icon-arrow-up.svg">
-              Возможность оставить вещи под замком
+            <section>
+              
+              Возможность оставить вещи <strong>под замком</strong>
             </section>
-            <section class="icon-block">
-              <img src="/images/icon-arrow-up.svg">
-              Возможность закрепить за собой рабочее место
+            <section>
+              
+              Возможность <strong>закрепить за собой</strong> рабочее место
             </section>
-            <section class="icon-block">
-              <img src="/images/icon-arrow-up.svg">
-              Высокоскоростной Интернет через WiFi или LAN
+            <section>
+              
+              <strong>Высокоскоростной Интернет</strong> через WiFi или LAN
             </section>
           </pk-grid>
         </section>
@@ -125,21 +134,25 @@
           </pk-grid>
         </section>
 
-        <section class="content-holder layout horizontal center page-section">
-          <div class="flex-1 cell">
-            <img src="https://graph.facebook.com/1496554450/picture?type=large" class="rounded">
-          </div>
-          <div class="flex-5 cell">
-            Для ценителей взаимомотивирующей рабочей атмосферы мы создали пространство,
-            в котором профессионалы творческой индустрии могут резервировать
-            рабочие места помесячно, фиксируя стол за собой, или по системе
-            hot desk («займи свободный стол»). Так же можно поработать и день.
-            Приходите попробовать! До 1-го октября неделя работы — бесплатно.
-          </div>
+        <section class="content-holder page-section">
+          <pk-slider>
+            <neon-animatable class="layout horizontal center">
+              <div class="flex-1 cell">
+                <img src="https://graph.facebook.com/1496554450/picture?type=large" class="rounded">
+              </div>
+              <div class="flex-5 cell">
+                Для ценителей взаимомотивирующей рабочей атмосферы мы создали пространство,
+                в котором профессионалы творческой индустрии могут резервировать
+                рабочие места помесячно, фиксируя стол за собой, или по системе
+                hot desk («займи свободный стол»). Так же можно поработать и день.
+                Приходите попробовать! До 1-го октября неделя работы — бесплатно.
+              </div>
+            </neon-animatable>
+          </pk-slider>
         </section>
 
         <section class="content-holder page-section">
-          <h2>Резиденты</h2>
+          <h2>Резиденты Практика</h2>
           <p>
             Благодаря просторному двору и стеклянным перегородкам, в здании
             очень светло. В отличие от большинства подобных проектов,
@@ -225,9 +238,23 @@
         <footer class="content-holder layout horizontal">
           <div class="flex-1">
             <h3>Практик в социальных сетях</h3>
+            <div class="pk-footer-icons">
+              <a href="https://www.facebook.com/praktik.space" target="_blank" class="pk-footer-social-link fa fa-facebook">
+              </a>
+              <a href="https://vk.com/praktikspace" target="_blank" class="pk-footer-social-link fa fa-vk">
+              </a>
+              <a href="https://www.instagram.com/praktik.space/" target="_blank" class="fa fa-instagram">
+              </a>
+            </div>
           </div>
           <div class="flex-2">
             <h3>Пресс-кит</h3>
+            <div class="pk-footer-icons">
+              <a href="/press-kit.zip">
+                <i class="fa fa-download"></i>
+                200мб.
+              </a>
+            </div>
           </div>
         </footer>
       </div>
