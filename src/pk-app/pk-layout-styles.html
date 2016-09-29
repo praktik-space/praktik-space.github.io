@@ -73,6 +73,10 @@
         line-height: 1.4rem;
       }
 
+      h3 a {
+        text-decoration: none;
+      }
+
       strong {
         @apply(--pk-layout-header-font);
         font-weight: normal;
@@ -82,8 +86,23 @@
         margin-bottom: 0.8rem;
       }
 
-      section.page-section {
-        margin-bottom: 2.8rem;
+      .page-section {
+        margin-bottom: 4.6rem;
+      }
+
+      .page-section-small {
+        margin-bottom: 2.3rem;
+      }
+
+      .insert-section {
+        background: #efefef;
+        padding: 2.3rem 0 2.3rem 0;
+        margin-top: -2.3rem;
+        margin-bottom: 2.3rem;
+      }
+
+      .insert-section section {
+        margin-bottom: 0px;
       }
 
       footer {
@@ -135,14 +154,18 @@
         @apply(--layout-center);
       }
 
+      section.icon-block {
+        margin-bottom: 2.8rem;
+      }
+
       .icon-block img {
-        width: 60px;
-        height: 60px;
+        width: 45px;
+        height: 45px;
         padding-right: 12px;
       }
 
       .residents-item {
-        @apply(--pk-layout-header-font);
+        /*@apply(--pk-layout-header-font);*/
       }
 
       .so-large-button {

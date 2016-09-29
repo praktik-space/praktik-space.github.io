@@ -16,28 +16,28 @@
 
       .left-arrow, .right-arrow {
         position: absolute;
-        top: calc(50% - 42px);
+        top: calc(50% - 49px);
         font-size: 400%;
         cursor: pointer;
       }
 
       .left-arrow {
-        left: -60px;
+        left: -40px;
       }
 
       .right-arrow {
-        right: -60px;
+        right: -40px;
       }
 
     </style>
 
-    <div class="left-arrow" on-click="prev">&lt;</div>
-    <div class="right-arrow" on-click="next">&gt;</div>
+    <div class="left-arrow" on-click="prev"><i class="fa fa-angle-left"></i></div>
+    <div class="right-arrow" on-click="next"><i class="fa fa-angle-right"></i></div>
 
     <neon-animated-pages on-click="next" id="pages" selected="[[selected]]">
       <content select="neon-animatable"></content>
     </neon-animated-pages>
   </template>
-  <script>Polymer({is:"pk-slider",attached:function(){this.selected=0,this.pages=Polymer.dom(this).children.map(function(e){return e.firstElementChild})},prev:function(){this.selected=Math.max(this.selected-1,0)},next:function(){this.selected=Math.min(this.selected+1,this.pages.length-1)}});</script>
+  <script>Polymer({is:"pk-slider",attached:function(){this.selected=0,this.pages=Polymer.dom(this).children.map(function(e){return e.firstElementChild})},prev:function(){this.selected=Math.max(this.selected-1,0)},next:function(){this.selected=(this.selected+1)%this.pages.length}});</script>
 </dom-module>
 </body></html>

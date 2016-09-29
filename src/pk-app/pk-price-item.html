@@ -30,7 +30,9 @@
       }
 
       .price {
-        margin: 1rem 0;
+        display: block;
+        margin-bottom: 0.7rem;
+        color: var(--pk-layout-color-info);
       }
 
       .book-button {
@@ -39,20 +41,15 @@
         text-decoration: underline;
       }
     </style>
-    <paper-dialog id="dialog" modal="">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <div class="buttons">
-        <paper-button dialog-confirm="" autofocus="">Tap me to close</paper-button>
-      </div>
-    </paper-dialog>
-    <h3>{{name}}</h3>
+    <h3>
+      {{name}}
+      <small class="price">{{price}}</small>
+    </h3>
     <ul>
       <content select="li"></content>
     </ul>
-    <h3 class="price">{{price}}</h3>
-    <span class="book-button" on-click="openDialog">{{actionTitle}}</span>
 
   </template>
-  <script>Polymer({is:"pk-price-item",parameters:{name:String,price:String,actionTitle:String},openDialog:function(){this.$.dialog.open()}});</script>
+  <script>Polymer({is:"pk-price-item",parameters:{name:String,price:String},openDialog:function(){this.$.dialog.open()}});</script>
 </dom-module>
 </body></html>
