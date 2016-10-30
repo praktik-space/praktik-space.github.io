@@ -1,0 +1,43 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="./pk-layout-styles.html">
+
+</head><body><dom-module id="pk-review-item">
+  <template>
+    <style include="iron-flex iron-flex-alignment iron-flex-factors pk-layout">
+      :host {
+        display: block;
+      }
+    </style>
+    <iron-media-query query="(max-width: 412px)" query-matches="{{mobileScreen}}"></iron-media-query>
+
+    <template is="dom-if" if="{{!mobileScreen}}">
+      <div class="layout horizontal center">
+        <div class="flex-1 cell">
+          <img src="{{image}}" class="rounded">
+        </div>
+        <div class="flex-6 cell">
+          <content></content>
+          <br>
+          <em> —&nbsp;{{title}}</em>
+        </div>
+      </div>
+    </template>
+    <template is="dom-if" if="{{mobileScreen}}">
+      <div class="layout horizontal center">
+        <div class="flex-2 cell">
+          <p>
+            <img src="{{image}}" class="rounded">
+          </p>
+        </div>
+        <div class="flex-3 cell">
+          <em> —&nbsp;{{title}}</em>
+        </div>
+      </div>
+      <content></content>
+    </template>
+  </template>
+  <script>Polymer({is:"pk-review-item",properties:{image:String,title:String}});</script>
+</dom-module>
+</body></html>

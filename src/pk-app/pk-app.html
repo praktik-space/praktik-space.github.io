@@ -1,19 +1,26 @@
 <html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/google-map/google-map.html">
 <link rel="import" href="../../bower_components/google-map/google-map-marker.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="./pk-layout-styles.html">
 <link rel="import" href="./pk-header.html">
 <link rel="import" href="./pk-picture-screen.html">
 <link rel="import" href="./pk-grid.html">
+<link rel="import" href="./pk-grid-cell.html">
 <link rel="import" href="./pk-price-item.html">
 <link rel="import" href="./pk-slider.html">
+<link rel="import" href="./pk-review-item.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-animatable.html">
 
 </head><body><dom-module id="pk-app">
   <template>
-    <style include="iron-flex iron-flex-alignment iron-flex-factors app-grid-style pk-layout">
+    <style include="iron-flex iron-flex-alignment iron-flex-factors pk-layout">
       :host {
         display: block;
       }
@@ -23,317 +30,361 @@
       }
     </style>
 
-    <app-header-layout fullbleed="">
-      <pk-header>
-        <a href="#coworking">коворкинг</a>
-        <a href="#residents">резиденты</a>
-        <address>Санкт-Петербург,<br> 7-я&nbsp;Cоветская,&nbsp;22</address>
-        <address phone-number="">8 (921) 303 06 26</address>
-      </pk-header>
+    <iron-media-query query="(max-width: 600px)" query-matches="{{mobileScreen}}"></iron-media-query>
 
-      <div>
-        <section class="page-section">
-          <pk-picture-screen src="/images/praktik-coworking.jpg">
-            <h1>Пространство для работы в&nbsp;центре Санкт-Петербурга</h1>
-            Коворкинг, офисы архитектурных, дизайн-бюро, IT компаний, образовательные проекты, кафе
-          </pk-picture-screen>
-        </section>
+    <app-drawer-layout fullbleed="">
+      <template is="dom-if" if="{{mobileScreen}}">
+        <app-drawer align="end" swipe-open="" class="pk-app-drawer">
+          <a href="#coworking">Коворкинг</a>
+          <a href="#residents">Резиденты</a>
+          <a href="#address">Адрес</a>
+        </app-drawer>
+      </template>
+      <app-header-layout>
+        <pk-header>
+          <a href="#coworking">коворкинг</a>
+          <a href="#residents">резиденты</a>
+          <address>Санкт-Петербург,<br> 7-я&nbsp;Cоветская,&nbsp;22</address>
+          <address phone-number="">+7 (931) 260-84-22</address>
+          <template is="dom-if" if="{{mobileScreen}}">
+            <paper-icon-button icon="menu" drawer-toggle="">a</paper-icon-button>
+          </template>
+        </pk-header>
 
-        <section class="content-holder page-section">
-          <h2 id="coworking">Коворкинг</h2>
-          <div class="layout horizontal start">
-            <div class="flex-2 cell">
-              <p>
-                Рабочая атмосфера, настольные лампы, принтер, канцелярия,
-                зарядные устройства для мобильных телефонов, комнатные растения
-                на каждом столе.
+        <div>
+          <section class="page-section">
+            <pk-picture-screen src="/images/praktik-coworking.jpg">
+              <h1>Пространство для работы в&nbsp;центре Санкт-Петербурга</h1>
+              Коворкинг, офисы архитектурных, дизайн-бюро, IT компаний, образовательные проекты, кафе
+            </pk-picture-screen>
+          </section>
 
-              </p>
+          <section class="content-holder page-section">
+            <h2 id="coworking">Коворкинг</h2>
+            <div class="layout horizontal start">
+              <div class="flex-2 cell">
+                <p>
+                  Рабочая атмосфера, настольные лампы, принтер, канцелярия,
+                  зарядные устройства для мобильных телефонов, комнатные растения
+                  на каждом столе.
+
+                </p>
+              </div>
+
+              <div class="flex-1 insert">
+                Коворкинг работает<br> ежедневно<br> с 10:00 до 22:00
+              </div>
             </div>
+          </section>
 
-            <div class="flex-1 insert">
-              Коворкинг работает<br> ежедневно<br> с 10:00 до 22:00
-            </div>
-          </div>
-        </section>
-
-        <section class="content-holder page-section">
-          <pk-slider>
-            <neon-animatable>
-              <img src="/images/praktik-coworking-01.jpg">
-            </neon-animatable>
-            <neon-animatable>
-              <img src="/images/praktik-coworking-02.jpg">
-            </neon-animatable>
-            <neon-animatable>
-              <img src="/images/praktik-coworking-03.jpg">
-            </neon-animatable>
-            <neon-animatable>
-              <img src="/images/praktik-coworking-04.jpg">
-            </neon-animatable>
-            <neon-animatable>
-              <img src="/images/praktik-coworking-05.jpg">
-            </neon-animatable>
-          </pk-slider>
-        </section>
-
-        <section class="content-holder page-section">
-          <pk-grid columns="3">
-            <section class="icon-block">
-              <img src="/images/icon-mug.svg">
-              Горячие напитки без ограничений
-            </section>
-            <section class="icon-block">
-              <img src="/images/icon-printer.svg">
-              Принтер и сканер
-            </section>
-            <section class="icon-block">
-              <img src="/images/icon-meeting.svg">
-              Переговорная комната
-            </section>
-            <div class="icon-block">
-              <img src="/images/icon-lock.svg">
-              Возможность оставить вещи под замком
-            </div>
-            <div class="icon-block">
-              <img src="/images/icon-pot.svg">
-              Возможность закрепить за&nbsp;собой рабочее место
-            </div>
-            <div class="icon-block">
-              <img src="/images/icon-wifi.svg">
-              Высокоскоростной Интернет
-            </div>
-          </pk-grid>
-        </section>
-
-        <div class="page-section insert-section">
-          <section class="content-holder">
+          <section class="content-holder page-section">
             <pk-slider>
-              <neon-animatable class="layout horizontal center">
-                <div class="flex-1 cell">
-                  <img src="/images/coworker-01.jpg" class="rounded">
-                </div>
-                <div class="flex-6 cell">
-                  Я — специалист по SMM. Раньше работала дома или в кафе,
-                  но там шумные посетители и&nbsp;раздражающая музыка. Решила
-                  поработать в Практике по совету подруги и не пожалела об этом.
-                  Рабочая аура этого места не дает лениться. Короче, мне нравится.
-                  <br>
-                  <em> —&nbsp;Ирина Бердникова, SMM-специалист</em>
-                </div>
+              <neon-animatable>
+                <img src="/images/praktik-coworking-01.jpg">
               </neon-animatable>
-
-              <neon-animatable class="layout horizontal center">
-                <div class="flex-1 cell">
-                  <img src="/images/coworker-02.jpg" class="rounded">
-                </div>
-                <div class="flex-6 cell">
-                  Я программист без постоянного офиса, я работал в библиотеках,
-                  в кафе, у друзей, в&nbsp;коворкингах, на пляже, в лесу, на свой
-                  кухне, но Практик — это то, о чем я всегда мечтал
-                  в&nbsp;Санкт-Петербурге. Он идеально сбалансирован, и в нем —&nbsp;все, что
-                  может понадобится для работы: идеальный вкус владельцев,
-                  отсутствие шума, комфорт.<br>
-                  <em> —&nbsp;Вадик Растягаев, программист</em>
-                </div>
+              <neon-animatable>
+                <img src="/images/praktik-coworking-02.jpg">
               </neon-animatable>
-
-              <neon-animatable class="layout horizontal center">
-                <div class="flex-1 cell">
-                  <img src="/images/coworker-03.jpg" class="rounded">
-                </div>
-                <div class="flex-6 cell">
-                  Ребята собрали все крутые проекты в одном месте. Все хотят быть
-                  лучшими — это мотивирует. Мой бизнес идеально вписался
-                  в&nbsp;Практик: самые результативные курсы в самом трудолюбивом месте
-                  Петербурга. Жду других проектов команды Практика, чтобы
-                  участвовать в них<br>
-                  <em> —&nbsp;Ярослав Маков, предприниматель</em>
-                </div>
+              <neon-animatable>
+                <img src="/images/praktik-coworking-03.jpg">
               </neon-animatable>
-
-              <neon-animatable class="layout horizontal center">
-                <div class="flex-1 cell">
-                  <img src="/images/coworker-04.jpg" class="rounded">
-                </div>
-                <div class="flex-6 cell">
-                  Я занимаюсь репортажной съемкой и портретной съемкой. Самая
-                  трудоемкая часть здесь&nbsp;— это постобработка. Ты через силу
-                  заставляешь себя открывать ноутбук, тратишь полдня на один
-                  снимок и, разумеется, опаздываешь со сроками. Так было, пока
-                  я&nbsp;не&nbsp;попробовала работу в коворкинге.
-                  Я не знаю, как это работает, зато я знаю, что в&nbsp;Практике моя
-                  эффективность возросла в четыре раза. Знаю, что приятная
-                  компания вокруг никогда не даст мне заснуть или заскучать.
-                  Знаю, что мне будет стыдно отвлекаться и смотреть в потолок в
-                  окружении крутых специалистов.
-                  <br>
-                  <em> —&nbsp;Настя Медведева, фотограф</em>
-                </div>
+              <neon-animatable>
+                <img src="/images/praktik-coworking-04.jpg">
+              </neon-animatable>
+              <neon-animatable>
+                <img src="/images/praktik-coworking-05.jpg">
               </neon-animatable>
             </pk-slider>
           </section>
-        </div>
 
-        <section class="content-holder page-section-small">
-          <h2>Тарифы</h2>
+          <section class="content-holder page-section">
+            <pk-grid columns="3">
+              <pk-grid-cell expand="2">
+                <section class="icon-block">
+                  <img src="/images/icon-mug.svg">
+                  Горячие напитки без ограничений
+                </section>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <section class="icon-block">
+                  <img src="/images/icon-printer.svg">
+                  Принтер и сканер
+                </section>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <section class="icon-block">
+                  <img src="/images/icon-meeting.svg">
+                  Переговорная комната
+                </section>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <section class="icon-block">
+                  <img src="/images/icon-lock.svg">
+                  Возможность оставить вещи под замком
+                </section>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <section class="icon-block">
+                  <img src="/images/icon-pot.svg">
+                  Возможность закрепить за&nbsp;собой рабочее место
+                </section>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <section class="icon-block">
+                  <img src="/images/icon-wifi.svg">
+                  Высокоскоростной Интернет
+                </section>
+              </pk-grid-cell>
+            </pk-grid>
+          </section>
 
-          <pk-grid columns="4">
-            <pk-price-item name="Дневной" price="500₽">
-              <li>Место в коворкинге</li>
-              <li>Печать и сканирование</li>
-              <li>Горячие напитки</li>
-              <li>Ящик для вещей</li>
-              <li>Работа с 10:00 до 22:00</li>
-            </pk-price-item>
-            <pk-price-item name="Месячный Hot desk" price="5000₽">
-              <li>Любое свободное место </li>
-              <li>Печать и сканирование</li>
-              <li>Напитки</li>
-              <li>Ящик для вещей</li>
-              <li>Работа с 10:00 до 22:00</li>
-            </pk-price-item>
-            <pk-price-item name="Месячный Fix desk" price="8000₽">
-              <li>Персональное фиксированное рабочее место </li>
-              <li>Печать и сканирование</li>
-              <li>Напитки</li>
-              <li>Ящик для вещей</li>
-              <li>Работа с 10:00 до 22:00</li>
-              <li>Переговорка на час в&nbsp;день</li>
-            </pk-price-item>
-            <pk-price-item name="Командный Fix desk" price="7000₽">
-              <li>Фиксированное рабочее место для команды (от&nbsp;4&nbsp;человек)</li>
-              <li>Круглосуточный доступ к&nbsp;рабочему месту</li>
-              <li>Печать и сканирование</li>
-              <li>Напитки</li>
-              <li>Ящик для вещей</li>
-              <li>Переговорка на&nbsp;2&nbsp;часа&nbsp;в&nbsp;день</li>
-            </pk-price-item>
-          </pk-grid>
-        </section>
+          <div class="page-section insert-section">
+            <section class="content-holder">
+              <pk-slider>
+                <neon-animatable>
+                  <pk-review-item image="/images/coworker-01.jpg" title="Ирина Бердникова, SMM-специалист">
+                    Я — специалист по SMM. Раньше работала дома или в кафе,
+                    но там шумные посетители и&nbsp;раздражающая музыка. Решила
+                    поработать в Практике по совету подруги и не пожалела об этом.
+                    Рабочая аура этого места не дает лениться. Короче, мне нравится.
+                  </pk-review-item>
+                </neon-animatable>
 
-        <section class="content-holder page-section">
-          Пожалуйста, позвоните перед визитом: 8 (921) 303 06 26
-        </section>
+                <neon-animatable>
+                  <pk-review-item image="/images/coworker-02.jpg" title="Вадик Растягаев, программист">
+                    Я программист без постоянного офиса, я работал в библиотеках,
+                    в кафе, у друзей, в&nbsp;коворкингах, на пляже, в лесу, на свой
+                    кухне, но Практик — это то, о чем я всегда мечтал
+                    в&nbsp;Санкт-Петербурге. Он идеально сбалансирован, и в нем —&nbsp;все, что
+                    может понадобится для работы: идеальный вкус владельцев,
+                    отсутствие шума, комфорт.
+                  </pk-review-item>
+                </neon-animatable>
 
-        <section class="content-holder page-section">
-          <h2 id="residents">Резиденты Практика</h2>
-          <p>
-            Практик – это среда для профессионалов. Здесь расположились студии
-            архитекторов, издателей, веб-разработчиков и дизайнеров,
-            образовательные проекты и мастерская арт-резиденции.<br>
-            Присоединяйтесь профессиональному сообществу!
-          </p>
-          <pk-grid columns="3">
-            <section class="residents-item">
-              <h3>
-                <a href="http://makovand.ru/" target="_blank">Маков и партнеры</a>
-              </h3>
-              <p>Курсы подготовки к ЕГЭ</p>
+                <neon-animatable>
+                  <pk-review-item image="/images/coworker-03.jpg" title="Ярослав Маков, предприниматель">
+                    Ребята собрали все крутые проекты в одном месте. Все хотят быть
+                    лучшими — это мотивирует. Мой бизнес идеально вписался
+                    в&nbsp;Практик: самые результативные курсы в самом трудолюбивом месте
+                    Петербурга. Жду других проектов команды Практика, чтобы
+                    участвовать в них
+                  </pk-review-item>
+                </neon-animatable>
+
+                <neon-animatable>
+                  <pk-review-item image="/images/coworker-04.jpg" title="Настя Медведева, фотограф">
+                    Я занимаюсь репортажной съемкой и портретной съемкой. Самая
+                    трудоемкая часть здесь&nbsp;— это постобработка. Ты через силу
+                    заставляешь себя открывать ноутбук, тратишь полдня на один
+                    снимок и, разумеется, опаздываешь со сроками. Так было, пока
+                    я&nbsp;не&nbsp;попробовала работу в коворкинге.
+                    Я не знаю, как это работает, зато я знаю, что в&nbsp;Практике моя
+                    эффективность возросла в четыре раза. Знаю, что приятная
+                    компания вокруг никогда не даст мне заснуть или заскучать.
+                    Знаю, что мне будет стыдно отвлекаться и смотреть в потолок в
+                    окружении крутых специалистов.
+                  </pk-review-item>
+                </neon-animatable>
+              </pk-slider>
             </section>
+          </div>
 
-            <section class="residents-item">
-              <h3>
-                <a href="https://evilmartians.com/" target="_blank">Злые Марсиане</a>
-              </h3>
-              <p>IT компания</p>
-            </section>
+          <section class="content-holder page-section-small">
+            <h2>Тарифы</h2>
 
-            <section class="residents-item">
-              <h3>
-                <a href="http://www.cecartslink.org/index.html" target="_blank">CEC ArtsLink workshop</a>
-              </h3>
-              <p>Мастерская арт-резиденции</p>
-            </section>
+            <pk-grid columns="4" mobile-columns="1">
+              <pk-grid-cell>
+                <pk-price-item name="Дневной" price="500₽">
+                  <li>Место в коворкинге</li>
+                  <li>Печать и сканирование</li>
+                  <li>Горячие напитки</li>
+                  <li>Ящик для вещей</li>
+                  <li>Работа с 10:00 до 22:00</li>
+                </pk-price-item>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <pk-price-item name="Месячный Hot desk" price="5000₽">
+                  <li>Любое свободное место </li>
+                  <li>Печать и сканирование</li>
+                  <li>Напитки</li>
+                  <li>Ящик для вещей</li>
+                  <li>Работа с 10:00 до 22:00</li>
+                </pk-price-item>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <pk-price-item name="Месячный Fix desk" price="8000₽">
+                  <li>Персональное фиксированное рабочее место </li>
+                  <li>Печать и сканирование</li>
+                  <li>Напитки</li>
+                  <li>Ящик для вещей</li>
+                  <li>Работа с 10:00 до 22:00</li>
+                  <li>Переговорка на час в&nbsp;день</li>
+                </pk-price-item>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <pk-price-item name="Командный Fix desk" price="7000₽">
+                  <li>Фиксированное рабочее место для команды (от&nbsp;4&nbsp;человек)</li>
+                  <li>Круглосуточный доступ к&nbsp;рабочему месту</li>
+                  <li>Печать и сканирование</li>
+                  <li>Напитки</li>
+                  <li>Ящик для вещей</li>
+                  <li>Переговорка на&nbsp;2&nbsp;часа&nbsp;в&nbsp;день</li>
+                </pk-price-item>
+              </pk-grid-cell>
+            </pk-grid>
+          </section>
 
-            <section class="residents-item">
-              <h3>
-                <span>UA</span>
-              </h3>
-              <p>Архитектурное бюро</p>
-            </section>
+          <section class="content-holder page-section">
+            Пожалуйста, позвоните перед визитом: +7 (931) 260-84-22
+          </section>
 
-            <section class="residents-item">
-              <h3>
-                <a href="http://codecode.ru/" target="_blank">Кодельная</a>
-              </h3>
-              <p>IT компания</p>
-            </section>
-
-            <section class="residents-item">
-              <h3>
-                <span>Курсы иллюстрации</span>
-              </h3>
-              <p>Алёна Козначеева</p>
-            </section>
-
-            <section class="residents-item">
-              <h3>
-                <a href="https://vk.com/neizdatelstvo" target="_blank">Неиздательство</a>
-              </h3>
-              <p>Издательский дом выходного дня</p>
-            </section>
-          </pk-grid>
-        </section>
-
-        <section class="content-holder page-section">
-          <pk-grid columns="3">
-            <a href="https://www.instagram.com/p/BK3haUMjsVC/?taken-by=praktik.space" target="blank">
-              <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/14350521_2019010341658794_2222415743390056448_n.jpg?ig_cache_key=MTM0ODY5MzU1NzM0NzUzNDE0Ng%3D%3D.2">
-            </a>
-
-            <a href="https://www.instagram.com/p/BKxZGFwj3UF/?taken-by=praktik.space" target="blank">
-              <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/14487423_1111105188969535_9107381956785471488_n.jpg?ig_cache_key=MTM0Njk2ODEzMzIyMzU0NDA2OQ%3D%3D.2">
-            </a>
-
-            <a href="https://www.instagram.com/p/BJfq29HDRF8/?taken-by=praktik.space" target="blank">
-              <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/14072842_1078128618931392_2035960755_n.jpg?ig_cache_key=MTMyMzk2NTMwOTg5MTk3MzUwMA%3D%3D.2">
-            </a>
-          </pk-grid>
-        </section>
-
-        <section class="content-holder layout horizontal page-section">
-          <div class="flex-2 cell">
+          <section class="content-holder page-section">
+            <h2 id="residents">Резиденты Практика</h2>
             <p>
-              Если вы считаете, что Практик подходит вам, а вы Практику,<br>
-              напишите нам пару слов о своем проекте&nbsp;—&nbsp;давайте
-              знакомиться. <a href="mailto:info@praktik.space">info@praktik.space</a>
+              Практик – это среда для профессионалов. Здесь расположились студии
+              архитекторов, издателей, веб-разработчиков и дизайнеров,
+              образовательные проекты и мастерская арт-резиденции.<br>
+              Присоединяйтесь профессиональному сообществу!
             </p>
-          </div>
-          <div class="flex-1 cell">
-            <a href="mailto:info@praktik.space" class="so-large-button">Стать резидентом</a>
-          </div>
-        </section>
+            <pk-grid columns="3" mobile-columns="2">
+              <pk-grid-cell>
+                <section class="residents-item">
+                  <h3>
+                    <a href="http://makovand.ru/" target="_blank">Маков и Партнеры</a>
+                  </h3>
+                  <p>Курсы подготовки к ЕГЭ</p>
+                </section>
+              </pk-grid-cell>
 
-        <section class="content-holder page-section">
-          <google-map fit-to-markers="" disable-zoom="" disable-map-type-control="" zoom="14" api-key="AIzaSyBrdJyk9uLpesMyB5ETxgAYa20GiV5AcU0" class="map">
-            <google-map-marker latitude="59.936029" longitude="30.373334" title="7-ая советская, 22"></google-map-marker>
-          </google-map>
-        </section>
+              <pk-grid-cell>
+                <section class="residents-item">
+                  <h3>
+                    <a href="https://evilmartians.com/" target="_blank">Злые Марсиане</a>
+                  </h3>
+                  <p>IT компания</p>
+                </section>
+              </pk-grid-cell>
 
-        <section class="content-holder page-section">
-          Санкт-Петербург, 7-ая Советская, 22,<br>
-          Метро «Площадь Восстания»,<br>
-          Троллейбус 5, 7, 10, 11, 7,<br>
-          Автобус 181, 74, 54, 46,<br>
-          8 (921) 303 06 26
-        </section>
+              <pk-grid-cell>
+                <section class="residents-item">
+                  <h3>
+                    <a href="http://www.cecartslink.org/index.html" target="_blank">CEC ArtsLink workshop</a>
+                  </h3>
+                  <p>Мастерская арт-резиденции</p>
+                </section>
+              </pk-grid-cell>
 
-        <footer class="content-holder layout horizontal">
-          <div class="flex-1">
-            <h3>Практик в социальных сетях</h3>
-            <div class="pk-footer-icons">
-              <a href="https://www.facebook.com/praktik.space" target="_blank" class="pk-footer-social-link fa fa-facebook">
-              </a>
-              <a href="https://vk.com/praktikspace" target="_blank" class="pk-footer-social-link fa fa-vk">
-              </a>
-              <a href="https://www.instagram.com/praktik.space/" target="_blank" class="fa fa-instagram">
-              </a>
+              <pk-grid-cell>
+                <section class="residents-item">
+                  <h3>
+                    <span>UA</span>
+                  </h3>
+                  <p>Архитектурное бюро</p>
+                </section>
+              </pk-grid-cell>
+
+              <pk-grid-cell>
+                <section class="residents-item">
+                  <h3>
+                    <a href="http://codecode.ru/" target="_blank">Кодельная</a>
+                  </h3>
+                  <p>IT компания</p>
+                </section>
+              </pk-grid-cell>
+
+              <pk-grid-cell>
+                <section class="residents-item">
+                  <h3>
+                    <span>Курсы иллюстрации</span>
+                  </h3>
+                  <p>Алёна Козначеева</p>
+                </section>
+              </pk-grid-cell>
+
+              <pk-grid-cell>
+                <section class="residents-item">
+                  <h3>
+                    <a href="https://vk.com/neizdatelstvo" target="_blank">Неиздательство</a>
+                  </h3>
+                  <p>Издательский дом выходного дня</p>
+                </section>
+              </pk-grid-cell>
+            </pk-grid>
+          </section>
+
+          <section class="content-holder page-section">
+            <pk-grid columns="3" mobile-columns="2">
+              <pk-grid-cell>
+                <section>
+                  <a href="https://www.instagram.com/p/BK3haUMjsVC/?taken-by=praktik.space" target="blank">
+                    <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/14350521_2019010341658794_2222415743390056448_n.jpg?ig_cache_key=MTM0ODY5MzU1NzM0NzUzNDE0Ng%3D%3D.2">
+                  </a>
+                </section>
+              </pk-grid-cell>
+
+              <pk-grid-cell>
+                <section>
+                  <a href="https://www.instagram.com/p/BKxZGFwj3UF/?taken-by=praktik.space" target="blank">
+                    <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/14487423_1111105188969535_9107381956785471488_n.jpg?ig_cache_key=MTM0Njk2ODEzMzIyMzU0NDA2OQ%3D%3D.2">
+                  </a>
+                </section>
+              </pk-grid-cell>
+
+              <pk-grid-cell>
+                <section>
+                  <a href="https://www.instagram.com/p/BJfq29HDRF8/?taken-by=praktik.space" target="blank">
+                    <img src="https://scontent.cdninstagram.com/t51.2885-15/e35/14072842_1078128618931392_2035960755_n.jpg?ig_cache_key=MTMyMzk2NTMwOTg5MTk3MzUwMA%3D%3D.2">
+                  </a>
+                </section>
+              </pk-grid-cell>
+            </pk-grid>
+          </section>
+
+          <section class="content-holder page-section">
+            <pk-grid columns="3">
+              <pk-grid-cell expand="2">
+                <p>
+                  Если вы считаете, что Практик подходит вам, а вы Практику,<br>
+                  напишите нам пару слов о своем проекте&nbsp;—&nbsp;давайте
+                  знакомиться. <a href="mailto:info@praktik.space">info@praktik.space</a>
+                </p>
+              </pk-grid-cell>
+              <pk-grid-cell>
+                <a href="mailto:info@praktik.space" class="so-large-button">Стать резидентом</a>
+              </pk-grid-cell>
+            </pk-grid>
+          </section>
+
+          <section class="content-holder page-section">
+            <google-map fit-to-markers="" disable-zoom="" disable-map-type-control="" zoom="14" api-key="AIzaSyBrdJyk9uLpesMyB5ETxgAYa20GiV5AcU0" class="map">
+              <google-map-marker latitude="59.936029" longitude="30.373334" title="7-ая советская, 22"></google-map-marker>
+            </google-map>
+          </section>
+
+          <section class="content-holder page-section">
+            Санкт-Петербург, 7-ая Советская, 22,<br>
+            Метро «Площадь Восстания»,<br>
+            Троллейбус 5, 7, 10, 11, 7,<br>
+            Автобус 181, 74, 54, 46,<br>
+            +7 (931) 260-84-22
+          </section>
+
+          <footer class="content-holder layout horizontal">
+            <div class="flex-1">
+              <h3>Практик в социальных сетях</h3>
+              <div class="pk-footer-icons">
+                <a href="https://www.facebook.com/praktik.space" target="_blank" class="pk-footer-social-link fa fa-facebook">
+                </a>
+                <a href="https://vk.com/praktikspace" target="_blank" class="pk-footer-social-link fa fa-vk">
+                </a>
+                <a href="https://www.instagram.com/praktik.space/" target="_blank" class="fa fa-instagram">
+                </a>
+              </div>
             </div>
-          </div>
-        </footer>
-      </div>
-    </app-header-layout>
+          </footer>
+        </div>
+      </app-header-layout>
+    </app-drawer-layout>
   </template>
 
   <script>Polymer({is:"pk-app"});</script>

@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/app-layout/app-box/app-box.html">
 <link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="./pk-layout-styles.html">
+<link rel="import" href="./pk-grid.html">
 
 </head><body><dom-module id="pk-picture-screen">
   <template>
@@ -24,7 +25,6 @@
         @apply(--pk-layout-header-font);
         color: white;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
-        width: 50%;
         font-size: 120%;
         line-height: 1.2;
         -webkit-font-smoothing: antialiased;
@@ -48,9 +48,13 @@
     <app-box>
       <iron-image background="" src="{{src}}" sizing="cover"></iron-image>
       <div class="content-holder">
-        <main>
-          <content></content>
-        </main>
+        <pk-grid columns="2">
+          <pk-grid-cell>
+            <main>
+              <content></content>
+            </main>
+          </pk-grid-cell>
+        </pk-grid>
       </div>
     </app-box>
 

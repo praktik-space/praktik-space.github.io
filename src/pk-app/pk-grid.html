@@ -5,10 +5,6 @@
   <template>
     <style>
       :host {
-      }
-
-      :host {
-        display: block;
         --app-grid-gutter: var(--pk-layout-block-indent);
 
         /**
@@ -20,14 +16,12 @@
          * - columns: var(--app-grid-columns)
          * - itemColumn: var(--app-grid-expandible-item-columns)
          */
-        --app-grid-expandible-item: {
+        /*--app-grid-expandible-item: {
           -webkit-flex-basis: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
           flex-basis: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
           max-width: calc((100% - 0.1px) / var(--app-grid-columns, 1) * var(--app-grid-expandible-item-columns, 1) - var(--app-grid-gutter, 0px)) !important;
-        };
-      }
+        };*/
 
-      .app-grid {
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
@@ -46,47 +40,10 @@
 
         margin-right: calc(-1 * var(--app-grid-gutter, 0px));
       }
-
-      .app-grid ::content > * {
-        /* Required for IE 10 */
-        -ms-flex: 1 1 100%;
-        -webkit-flex: 1;
-        flex: 1;
-
-        /* The width for an item is: (100% - subPixelAdjustment - gutter * columns) / columns */
-        -webkit-flex-basis: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
-        flex-basis: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
-
-        max-width: calc((100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1));
-        height: var(--app-grid-item-height, auto);
-        box-sizing: border-box;
-        margin-right: var(--app-grid-gutter, 0px);
-      }
-
-      .app-grid[has-aspect-ratio] ::content > * {
-        position: relative;
-      }
-
-      .app-grid[has-aspect-ratio] ::content > *::before {
-        display: block;
-        content: "";
-        padding-top: var(--app-grid-item-height, 100%);
-      }
-
-      .app-grid[has-aspect-ratio] ::content > * > * {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-
     </style>
-    <div class="app-grid">
-      <content></content>
-    </div>
+    <content></content>
   </template>
 
-  <script>Polymer({is:"pk-grid",properties:{columns:{type:Number,observer:"_columnsChanged"}},_columnsChanged:function(){this.customStyle["--app-grid-columns"]=String(this.columns),this.updateStyles()}});</script>
+  <script>Polymer({is:"pk-grid",properties:{columns:{type:Number,observer:"_columnsChanged"},mobileColumns:{type:Number,value:1}},_columnsChanged:function(){Polymer.dom(this).querySelectorAll("pk-grid-cell").forEach(function(e){e.columns=this.columns,e.mobileColumns=this.mobileColumns}.bind(this))}});</script>
 </dom-module>
 </body></html>

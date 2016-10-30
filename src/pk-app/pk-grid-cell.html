@@ -1,0 +1,32 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="./pk-layout-styles.html">
+
+</head><body><dom-module id="pk-grid-cell">
+  <template>
+    <style>
+      :host {
+        display: block;
+        --app-grid-gutter: var(--pk-layout-block-indent);
+
+        /* Required for IE 10 */
+        -ms-flex: 1 1 100%;
+        -webkit-flex: 1;
+        flex: 1;
+
+        /* The width for an item is: (100% - subPixelAdjustment - gutter * columns) / columns */
+        -webkit-flex-basis: calc(var(--app-grid-expand, 1) * (100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1)  + var(--app-grid-gutter, 0px) * (var(--app-grid-expand, 1) - 1));
+        flex-basis: calc(var(--app-grid-expand, 1) * (100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1)  + var(--app-grid-gutter, 0px) * (var(--app-grid-expand, 1) - 1));
+
+        max-width: calc(var(--app-grid-expand, 1) * (100% - 0.1px - (var(--app-grid-gutter, 0px) * var(--app-grid-columns, 1))) / var(--app-grid-columns, 1)  + var(--app-grid-gutter, 0px) * (var(--app-grid-expand, 1) - 1));
+        height: auto;
+        box-sizing: border-box;
+        margin-right: var(--app-grid-gutter, 0px);
+      }
+    </style>
+    <iron-media-query query="(max-width: 412px)" query-matches="{{mobileScreen}}"></iron-media-query>
+    <content></content>
+  </template>
+  <script>Polymer({is:"pk-grid-cell",properties:{columns:{type:Number,observer:"_redrawObserver"},mobileColumns:{type:Number,observer:"_redrawObserver"},mobileScreen:{type:Boolean,observer:"_redrawObserver"},expand:{type:Number,observer:"_redrawObserver",value:1}},_redrawObserver:function(){this.customStyle["--app-grid-columns"]=String(this.mobileScreen?this.mobileColumns:this.columns),this.customStyle["--app-grid-expand"]=String(this.mobileScreen?1:this.expand),this.updateStyles()}});</script>
+</dom-module>
+</body></html>

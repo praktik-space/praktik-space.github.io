@@ -41,13 +41,15 @@
         text-decoration: underline;
       }
     </style>
-    <h3>
-      {{name}}
-      <small class="price">{{price}}</small>
-    </h3>
-    <ul>
-      <content select="li"></content>
-    </ul>
+    <section>
+      <h3>
+        {{name}}
+        <small class="price">{{price}}</small>
+      </h3>
+      <ul>
+        <content select="li"></content>
+      </ul>
+    </section>
 
   </template>
   <script>Polymer({is:"pk-price-item",parameters:{name:String,price:String},openDialog:function(){this.$.dialog.open()}});</script>

@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="./pk-layout-styles.html">
 
 </head><body><dom-module id="pk-header">
@@ -51,22 +52,26 @@
         color: var(--pk-layout-color-info);
       }
     </style>
+    <iron-media-query query="(max-width: 600px)" query-matches="{{mobileScreen}}"></iron-media-query>
     <app-header disabled="">
-      <app-toolbar class="layout horizontal end content-holder">
+      <app-toolbar class$="{{appToolbarClass(mobileScreen)}}">
         <div main-title="" class="flex-none layout horizontal">
           <img src="/images/praktik-logo.svg" class="logo">
         </div>
-        <div class="flex menu-items">
-          <content select="a"></content>
-        </div>
-        <address>
-          <content select="address:not([phone-number])"></content>
-          <content select="address[phone-number]"></content>
-        </address>
+        <template is="dom-if" if="{{!mobileScreen}}">
+          <div class="flex menu-items">
+            <content select="a"></content>
+          </div>
+          <address>
+            <content select="address:not([phone-number])"></content>
+            <content select="address[phone-number]"></content>
+          </address>
+        </template>
+        <content select="[drawer-toggle]"></content>
       </app-toolbar>
     </app-header>
 
   </template>
-  <script>Polymer({is:"pk-header"});</script>
+  <script>Polymer({is:"pk-header",appToolbarClass:function(e){return"layout horizontal content-holder"+(e?" center justified":" end")}});</script>
 </dom-module>
 </body></html>
